@@ -1,0 +1,125 @@
+.query {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  .header {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+
+    .home-btn {
+      background: none;
+      border: none;
+      color: #ff0000;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.25rem 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 0;
+
+    .message {
+      display: flex;
+
+      &.user {
+        justify-content: flex-end;
+
+        .bubble {
+          background-color: #ff0000;
+          color: white;
+        }
+      }
+
+      &.assistant {
+        justify-content: flex-start;
+
+        .bubble {
+          background-color: #f1f1f1;
+          color: #333;
+        }
+      }
+
+      .bubble {
+        max-width: 70%;
+        padding: 0.75rem 1rem;
+        border-radius: 16px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+
+        &.typing {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          span {
+            width: 8px;
+            height: 8px;
+            background-color: #999;
+            border-radius: 50%;
+            animation: bounce 1.2s infinite ease-in-out;
+
+            &:nth-child(1) { animation-delay: 0s; }
+            &:nth-child(2) { animation-delay: 0.2s; }
+            &:nth-child(3) { animation-delay: 0.4s; }
+          }
+        }
+      }
+    }
+  }
+
+  .input-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #eee;
+
+    input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      outline: none;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: #ff0000;
+      }
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #cc0000;
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}

@@ -1,0 +1,24 @@
+<div class="query">
+  <div class="header">
+    <button class="home-btn" routerLink="/">&#8592; Home</button>
+  </div>
+  <div class="messages">
+    @for (msg of messages(); track msg.order) {
+      <div class="message" [ngClass]="msg.sender">
+        <span class="bubble">{{ msg.text }}</span>
+      </div>
+    }
+    @if (isTyping()) {
+      <div class="message assistant">
+        <span class="bubble typing">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+    }
+  </div>
+ 
+  <div class="input-bar">
+    <input #input type="text" placeholder="Ask a question..." />
+    <button (click)="sendMessage(input)">Send</button>
+  </div>
+</div>

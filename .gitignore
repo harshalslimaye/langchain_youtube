@@ -31,5 +31,8 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Backend indexes
+backend/indexes/
+
 # Misc
 *.log
