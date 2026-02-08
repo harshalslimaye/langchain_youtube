@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 
 interface ApiResponse {
   message: string;
+  history?: { role: 'user' | 'assistant'; content: string }[];
 }
 
 @Injectable({

@@ -29,7 +29,12 @@ export class QueryComponent implements OnInit {
   ngOnInit(): void {
     this.isTyping.set(true);
     this.youtube.load(this.videoId).subscribe({
-      next: (res) => this.pushMessage(res.message, 'assistant'),
+      next: (res) => {
+        this.pushMessage(res.message, 'assistant');
+        if (res.history) {
+          res.history.forEach(item => this.pushMessage(item.content, item.role));
+        }
+      },
       error: () => this.pushMessage('Failed to load video data.', 'assistant')
     });
   }
